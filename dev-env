@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# Convert the first argument to lowercase for case-insensitive matching
+COMMAND=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+
+case "$COMMAND" in
+  start)
+    echo "Starting development environment..."
+
+    if docker compose up -d; then
+      echo ""
+      echo "Environment is up!"
+      echo "- Kafka Brokers: localhost:9092"
+      echo "- Schema Registry: http://localhost:8081"
+      echo "- AKHQ UI: http://localhost:8080"
+    else
+      echo ""
+      echo "Error: Failed to start the development environment."
+      echo "Please check if the Docker daemon is running."
+      exit 1
+    fi
+    ;;
+
+  stop)
+    echo "Stopping development environment..."
+    docker compose down
+    ;;
+
+  clean)
+    echo "Stopping and deleting data volumes..."
+    docker compose down -v
+    echo "Environment cleaned up."
+    ;;
+
+  status)
+    echo "Container Status:"
+    docker compose ps
+    ;;
+
+  logs)
+    echo "Tailing logs (Press Ctrl+C to exit)..."
+    docker compose logs -f
+    ;;
+
+  help|*)
+    echo ""
+    echo "========================================================"
+    echo "  Development Environment Manager (Linux/macOS)"
+    echo "========================================================"
+    echo "Usage: ./dev-env.sh [command]"
+    echo ""
+    echo "Commands:"
+    echo "  start   - Starts the environment in the background"
+    echo "  stop    - Stops the environment without deleting data"
+    echo "  clean   - Stops the environment and deletes volumes"
+    echo "  status  - Shows the status of the containers"
+    echo "  logs    - Tails the logs for all services"
+    echo ""
+    ;;
+esac

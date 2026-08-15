@@ -21,9 +21,9 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-
-      # Loggers
-      KAFKA_LOG4J_LOGGERS: "org.apache.kafka=WARN,kafka=WARN,kafka.server.BrokerLifecycleManager=WARN,state.change.logger=WARN"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+      - kafka_secrets:/etc/kafka/secrets
 
   schema-registry:
     image: confluentinc/cp-schema-registry:7.6.0
@@ -36,7 +36,8 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://kafka:29092'
       SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8081'
-      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: WARN
+    volumes:
+      - sr_secrets:/etc/schema-registry/secrets
 
   akhq:
     image: tchiotludo/akhq:0.25.0
@@ -55,3 +56,8 @@ services:
                 bootstrap.servers: "kafka:29092"
               schema-registry:
                 url: "http://schema-registry:8081"
+
+volumes:
+  kafka_data:
+  kafka_secrets:
+  sr_secrets:

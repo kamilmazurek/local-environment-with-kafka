@@ -1,5 +1,4 @@
 @echo off
-SETLOCAL EnableDelayedExpansion
 
 :: Check if a command was passed
 IF "%~1"=="" GOTO :Help
@@ -30,6 +29,14 @@ GOTO :EOF
 :Start
 echo Starting development environment...
 docker compose up -d
+
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo Error: Failed to start the development environment.
+    echo Please check if the Docker Desktop/daemon is running.
+    GOTO :EOF
+)
+
 echo.
 echo Environment is up!
 echo - Kafka Brokers: localhost:9092
