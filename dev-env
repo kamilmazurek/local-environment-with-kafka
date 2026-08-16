@@ -69,7 +69,7 @@ case "$COMMAND" in
   help|*)
     echo ""
     echo "========================================================"
-    echo "  Development Environment Manager (Linux/macOS)"
+    echo "  Development Environment Manager"
     echo "========================================================"
     echo "Usage: ./dev-env.sh [command]"
     echo ""

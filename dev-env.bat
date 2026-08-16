@@ -15,7 +15,7 @@ IF /I "%~1"=="test-data" GOTO :TestData
 :Help
 echo.
 echo ========================================================
-echo   Development Environment Manager (Windows)
+echo   Development Environment Manager
 echo ========================================================
 echo Usage: dev-env [command]
 echo.
