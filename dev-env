@@ -15,7 +15,7 @@ case "$COMMAND" in
       echo "- AKHQ UI: http://localhost:8080"
       echo "- ksqlDB Server: http://localhost:8088"
       echo ""
-      echo "Type './dev-env.sh ksql' to start querying your streams!"
+      echo "Type './dev-env.sh ksql' to start querying your streams."
     else
       echo ""
       echo "Error: Failed to start the development environment."
@@ -50,6 +50,22 @@ case "$COMMAND" in
     docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
     ;;
 
+  test-data)
+    echo "Seeding items test data via ksqlDB..."
+
+    if [ ! -f test-data.sql ]; then
+      echo "Error: test-data.sql not found in the current directory!"
+      exit 1
+    fi
+
+    # Pipe the file into the ksqldb container
+    cat test-data.sql | docker exec -i ksqldb-cli ksql http://ksqldb-server:8088
+
+    echo ""
+    echo "Test data seeded successfully!"
+    echo "View it in AKHQ (http://localhost:8080) or run './dev-env.sh ksql' and type: SELECT * FROM items EMIT CHANGES;"
+    ;;
+
   help|*)
     echo ""
     echo "========================================================"
@@ -58,12 +74,13 @@ case "$COMMAND" in
     echo "Usage: ./dev-env.sh [command]"
     echo ""
     echo "Commands:"
-    echo "  start   - Starts the environment in the background"
-    echo "  stop    - Stops the environment without deleting data"
-    echo "  clean   - Stops the environment and deletes volumes"
-    echo "  status  - Shows the status of the containers"
-    echo "  logs    - Tails the logs for all services"
-    echo "  ksql    - Opens the interactive ksqlDB CLI"
+    echo "  start     - Starts the environment in the background"
+    echo "  stop      - Stops the environment without deleting data"
+    echo "  clean     - Stops the environment and deletes volumes"
+    echo "  status    - Shows the status of the containers"
+    echo "  logs      - Tails the logs for all services"
+    echo "  ksql      - Opens the interactive ksqlDB CLI"
+    echo "  test-data - Seeds the environment with test data"
     echo ""
     ;;
 esac
