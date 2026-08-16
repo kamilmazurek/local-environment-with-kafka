@@ -9,6 +9,7 @@ IF /I "%~1"=="stop" GOTO :Stop
 IF /I "%~1"=="clean" GOTO :Clean
 IF /I "%~1"=="status" GOTO :Status
 IF /I "%~1"=="logs" GOTO :Logs
+IF /I "%~1"=="ksql" GOTO :Ksql
 
 :Help
 echo.
@@ -23,6 +24,7 @@ echo   stop    - Stops the environment without deleting data
 echo   clean   - Stops the environment and deletes volumes
 echo   status  - Shows the status of the containers
 echo   logs    - Tails the logs for all services
+echo   ksql    - Opens the interactive ksqlDB CLI
 echo.
 GOTO :EOF
 
@@ -42,6 +44,9 @@ echo Environment is up!
 echo - Kafka Brokers: localhost:9092
 echo - Schema Registry: http://localhost:8081
 echo - AKHQ UI: http://localhost:8080
+echo - ksqlDB Server: http://localhost:8088
+echo.
+echo Type 'dev-env ksql' to start querying your streams!
 GOTO :EOF
 
 :Stop
@@ -63,4 +68,9 @@ GOTO :EOF
 :Logs
 echo Tailing logs (Press Ctrl+C to exit)...
 docker compose logs -f
+GOTO :EOF
+
+:Ksql
+echo Opening ksqlDB CLI...
+docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
 GOTO :EOF

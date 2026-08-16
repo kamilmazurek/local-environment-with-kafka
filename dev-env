@@ -13,6 +13,9 @@ case "$COMMAND" in
       echo "- Kafka Brokers: localhost:9092"
       echo "- Schema Registry: http://localhost:8081"
       echo "- AKHQ UI: http://localhost:8080"
+      echo "- ksqlDB Server: http://localhost:8088"
+      echo ""
+      echo "Type './dev-env.sh ksql' to start querying your streams!"
     else
       echo ""
       echo "Error: Failed to start the development environment."
@@ -42,6 +45,11 @@ case "$COMMAND" in
     docker compose logs -f
     ;;
 
+  ksql)
+    echo "Opening ksqlDB CLI..."
+    docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+    ;;
+
   help|*)
     echo ""
     echo "========================================================"
@@ -55,6 +63,7 @@ case "$COMMAND" in
     echo "  clean   - Stops the environment and deletes volumes"
     echo "  status  - Shows the status of the containers"
     echo "  logs    - Tails the logs for all services"
+    echo "  ksql    - Opens the interactive ksqlDB CLI"
     echo ""
     ;;
 esac
