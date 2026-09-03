@@ -69,7 +69,7 @@ GOTO :EOF
 
 :Logs
 echo Tailing logs (Press Ctrl+C to exit)...
-docker compose logs -f
+docker compose logs -f --tail=50
 GOTO :EOF
 
 :Ksql
