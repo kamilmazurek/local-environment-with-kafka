@@ -1,5 +1,18 @@
 # Local Development Environment with Apache Kafka
 
+This repository contains an implementation of a local development environment, featuring Apache Kafka, ksqlDB, AKHQ, and Schema Registry.  The environment is built with Docker Compose, running Kafka in modern KRaft mode.
+It provides a ready-to-use local infrastructure designed to quickly start working with Kafka, e.g., data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
+
+Key advantages:
+* **Developer Productivity**: Ready-to-use, cross-platform setup lets developers start quickly while ensuring consistent infrastructure across teams.
+* **Simple Architecture**: Runs Kafka in KRaft mode, simplifying local setup, accelerating boot times, and reducing memory usage.
+* **Unified Visibility**: Pre-configured AKHQ provides a UI to visually inspect topics, manage consumer groups, and view messages.
+* **Stream Processing Ready**: Includes ksqlDB server and CLI, allowing you to query, filter, and manipulate streams using SQL-like syntax.
+* **Schema Management**: Integrates with Schema Registry for managing Avro, Protobuf, or JSON schemas when strict data contracts are required.
+* **Ease of Testing**: Scripts support environment provisioning, cleanup, and test data seeding, while AKHQ and ksqlDB provide visibility of topics and streams.
+
+The goal is to keep it useful, simple, clean, and easy to run.
+
 ## Quickstart
 
 TODO
