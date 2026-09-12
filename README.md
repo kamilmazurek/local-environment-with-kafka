@@ -136,6 +136,28 @@ If you need to troubleshoot or simply want to watch the components boot up in re
 dev-env logs
 ```
 
+## Seeding Test Data
+
+By default, the started Kafka cluster contains no messages, so you may want to add some test data.
+To make testing easier and more efficient, this environment includes a quick way to inject sample data using the provided wrapper scripts.
+
+Test data is stored in the `test-data.sql` file, which contains ksqlDB statements.
+By default, it automatically creates a stream named `items` and inserts three sample records into it.
+
+When you run the `test-data` command, the script pipes the contents of `test-data.sql` directly into the `ksqldb-cli` container, executing the queries on the `ksqldb-server`.
+
+To seed the environment with test data, **wait until the environment is fully initialized**, then run the following command:
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh test-data
+```
+
+**For Windows:**
+```cmd
+dev-env test-data
+```
+
 ## Disclaimer
 
 THIS SOFTWARE AND ANY DOCUMENTATION INCLUDED IN THIS REPOSITORY AND CREATED BY THE AUTHOR
