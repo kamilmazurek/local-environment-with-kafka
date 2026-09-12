@@ -56,11 +56,32 @@ In a typical data engineering workflow, Kafka works well with **Streaming ETL** 
 
 This local environment lets you actually develop and test these workflows by running the essential components of a streaming platform directly on your machine:
 * **Storage & Delivery**: Kafka brokers reliably receive and persist high-throughput streams published by your databases or APIs, and efficiently serve that data to downstream consumers.
-* **Data Quality & Governance**: **Schema Registry** enforces strict data contracts, ensuring producers and consumers always agree on data structures.
-* **Real-Time Transformation**: **ksqlDB** lets you process, filter, join, and aggregate data using SQL-like syntax.
-* **Observability**: **AKHQ** provides immediate visibility into topics, partitions, and message payloads, making local debugging easy.
+* **Data Quality & Governance**: Schema Registry enforces strict data contracts, ensuring producers and consumers always agree on data structures.
+* **Real-Time Transformation**: ksqlDB lets you process, filter, join, and aggregate data using SQL-like syntax.
+* **Observability**: AKHQ provides immediate visibility into topics, partitions, and message payloads, making local debugging easy.
 
 Whether you are building a fraud detection system, synchronizing databases, or feeding a data lake, this environment provides the tools needed to prototype and test those data flows locally.
+
+## Technology Stack
+
+The environment is built around the Apache Kafka ecosystem and relies on Docker Compose to orchestrate the infrastructure.
+It provides a fully functional event streaming platform without the need to install anything locally other than Docker.
+
+In summary, the stack looks as follows:
+- **Streaming Platform**
+    - **Apache Kafka**: Core event streaming platform configured to run in modern KRaft mode (ZooKeeper-free).
+    - **Schema Registry**: Centralized service for managing and validating message schemas (Avro, Protobuf, JSON).
+
+- **SQL-Based Streaming**
+    - **ksqlDB Server**: Engine for building real-time stream processing pipelines using SQL.
+    - **ksqlDB CLI**: Interactive command-line interface to write and execute continuous queries.
+
+- **Observability**
+    - **AKHQ**: Web-based UI used to visually inspect Kafka topics, read message payloads, and manage consumer groups.
+
+- **Infrastructure & Automation**
+    - **Docker and Docker Compose**: Platforms used to containerize and spin up the entire cluster consistently.
+    - **Bash and Batch Scripts**: Custom wrapper scripts (`dev-env.sh` and `dev-env.bat`) designed to simplify environment lifecycle management.
 
 ## Disclaimer
 
