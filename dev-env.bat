@@ -43,7 +43,7 @@ IF %ERRORLEVEL% NEQ 0 (
 
 echo.
 echo Environment is up!
-echo - Kafka Brokers: localhost:9092
+echo - Kafka Broker: localhost:9092
 echo - Schema Registry: http://localhost:8081
 echo - AKHQ UI: http://localhost:8080
 echo - ksqlDB Server: http://localhost:8088

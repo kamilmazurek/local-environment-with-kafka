@@ -72,9 +72,9 @@ In summary, the stack looks as follows:
     - **Apache Kafka**: Core event streaming platform configured to run in modern KRaft mode (ZooKeeper-free).
     - **Schema Registry**: Centralized service for managing and validating message schemas (Avro, Protobuf, JSON).
 
-- **SQL-Based Streaming**
-    - **ksqlDB Server**: Engine for building real-time stream processing pipelines using SQL.
-    - **ksqlDB CLI**: Interactive command-line interface to write and execute continuous queries.
+- **Data Analytics**
+    - **ksqlDB Server**: Engine for analyzing streaming data with SQL-like syntax.
+    - **ksqlDB CLI**: Interactive command-line interface to write and execute queries.
 
 - **Observability**
     - **AKHQ**: Web-based UI used to visually inspect Kafka topics, read message payloads, and manage consumer groups.
@@ -82,6 +82,59 @@ In summary, the stack looks as follows:
 - **Infrastructure & Automation**
     - **Docker and Docker Compose**: Platforms used to containerize and spin up the entire cluster consistently.
     - **Bash and Batch Scripts**: Custom wrapper scripts (`dev-env.sh` and `dev-env.bat`) designed to simplify environment lifecycle management.
+
+## Deployment
+
+The entire infrastructure is containerized and orchestrated using Docker Compose.
+To make managing the lifecycle of the environment easier, this repository includes wrapper scripts (`dev-env.sh` for Linux/macOS and `dev-env.bat` for Windows).
+
+### Start the Environment
+To start the Kafka broker, Schema Registry, ksqlDB, and AKHQ in the background, simply use the `start` command:
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh start
+```
+
+**For Windows:**
+```cmd
+dev-env start
+```
+
+You should see a confirmation that the environment started successfully, along with the local endpoints for your services:
+* Kafka Broker: `localhost:9092`
+* Schema Registry: `http://localhost:8081`
+* AKHQ UI: `http://localhost:8080`
+* ksqlDB Server: `http://localhost:8088`
+
+### image goes here
+
+### Verify Services and Logs
+
+It may take a few moments for all the services to fully initialize.
+You can check the status of your containers by running:
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh status
+```
+
+**For Windows:**
+```cmd
+dev-env status
+```
+
+If you need to troubleshoot or simply want to watch the components boot up in real-time, you can easily tail the logs for all services:
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh logs
+```
+
+**For Windows:**
+```cmd
+dev-env logs
+```
 
 ## Disclaimer
 
