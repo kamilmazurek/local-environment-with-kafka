@@ -163,9 +163,9 @@ To do so, simply open your browser and navigate to `http://localhost:8080` to vi
 
 ## Monitoring and Management via AKHQ
 
-AKHQ provides a web-based user interface that helps developers view and manage Kafka clusters without needing to rely strictly on command-line utilities.
-It offers a convenient way to observe cluster activity, produce test messages, check active listeners, and review stored records.
-Pre-configured in the Docker Compose setup, it connects directly to your Kafka broker and Schema Registry.
+AKHQ provides a web-based user interface that helps developers view and manage Kafka clusters in simple and convenient way.
+It offers a convenient way to observe cluster activity, produce test messages, check active listeners, and review stored data.
+AKHQ is already integrated into this environment's Docker Compose setup, so it connects directly to the Kafka broker and Schema Registry.
 
 To open the interface, navigate to `http://localhost:8080` in your web browser.
 
@@ -179,7 +179,43 @@ As an example, here is a quick glimpse of how the AKHQ interface displays messag
 
 ### TODO: ADD IMAGE
 
-Having immediate visual feedback on your topics and messages makes debugging streaming applications significantly easier.
+Having visual feedback on your topics and messages makes testing and debugging significantly easier.
+
+## Managing Topics and Messages via CLI
+
+While AKHQ provides a convenient web UI for interacting with a cluster, you sometimes might prefer to use command-line tools.
+Since the Kafka broker is running in a `kafka` Docker container, you can access such tools using `docker exec`.
+
+Here are a few simple commands you can run directly from your terminal.
+
+**List all topics:**
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --list
+```
+
+**Create a new topic:**
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --create --topic my-new-topic --partitions 1 --replication-factor 1
+```
+
+**Describe a topic:**
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --describe --topic my-new-topic
+```
+
+You can also send and read raw messages directly from the terminal using the built-in console clients.
+
+**Produce messages to a topic:**
+```bash
+docker exec -it kafka kafka-console-producer --bootstrap-server localhost:9092 --topic my-new-topic
+```
+
+> (Once the prompt opens, type a message and press Enter. Press `Ctrl+C` to exit.)
+
+**Consume messages from a topic:**
+```bash
+docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic my-new-topic --from-beginning
+```
 
 ## Disclaimer
 
