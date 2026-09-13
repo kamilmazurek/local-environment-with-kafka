@@ -158,6 +158,29 @@ To seed the environment with test data, **wait until the environment is fully in
 dev-env test-data
 ```
 
+Once the script completes successfully, you can easily verify that the messages were published to your cluster, e.g. by using AKHQ.
+To do so, simply open your browser and navigate to `http://localhost:8080` to visually inspect the newly created items topic and view the message payloads.
+
+## Monitoring and Management via AKHQ
+
+AKHQ provides a web-based user interface that helps developers view and manage Kafka clusters without needing to rely strictly on command-line utilities.
+It offers a convenient way to observe cluster activity, produce test messages, check active listeners, and review stored records.
+Pre-configured in the Docker Compose setup, it connects directly to your Kafka broker and Schema Registry.
+
+To open the interface, navigate to `http://localhost:8080` in your web browser.
+
+Once open, the dashboard gives you a unified view of your local environment:
+* **Topic Management:** View a complete list of topics, check partition layouts, inspect replication details, create new topics, or modify existing configurations.
+* **Data Browsing:** Inspect real-time message payloads, keys, timestamps, and headers inside any topic. If you are using Schema Registry, AKHQ automatically handles message deserialization.
+* **Consumer Groups:** Monitor active consumer groups, track consumer lag across partitions, and review offset assignments.
+* **Schema Registry:** Explore registered schemas, check version history, and validate compatibility rules directly through the UI.
+
+As an example, here is a quick glimpse of how the AKHQ interface displays messages:
+
+### TODO: ADD IMAGE
+
+Having immediate visual feedback on your topics and messages makes debugging streaming applications significantly easier.
+
 ## Disclaimer
 
 THIS SOFTWARE AND ANY DOCUMENTATION INCLUDED IN THIS REPOSITORY AND CREATED BY THE AUTHOR
