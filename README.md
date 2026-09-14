@@ -26,7 +26,7 @@ TODO
 * [Monitoring and Management via AKHQ](#monitoring-and-management-via-akhq)
 * [Managing Topics and Messages via CLI](#managing-topics-and-messages-via-cli)
 * [Schema Registry for Data Contracts](#schema-registry-for-data-contracts)
-* [SQL-Based Stream Processing with ksqlDB](#sql-based-stream-processing-with-ksqldb)
+* [Data Analysis with ksqlDB](#data-analysis-with-ksqldb)
 * [Stop and Cleanup](#stop-and-cleanup)
 * [Additional Resources](#additional-resources)
 * [Author](#author)
@@ -266,6 +266,145 @@ curl http://localhost:8081/subjects/test-topic-value/versions/latest
 ```
 
 This combination of the Schema Registry, visual management, and direct API access makes it easy to enforce and test data contracts locally.
+
+## Data Analysis with ksqlDB
+
+With ksqlDB, you can analyze data using a familiar, SQL-like syntax.
+Instead of writing custom Java or Scala code with Kafka Streams, you can filter, transform, aggregate, and join real-time data streams declaratively.
+You can also use good old tables 🙂
+
+In this environment, ksqlDB Server and the interactive CLI come pre-configured out of the box.
+
+You can start an interactive ksqlDB CLI session using the provided wrapper script:
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh ksql
+```
+
+**For Windows:**
+```cmd
+dev-env ksql
+```
+
+Once connected, you will see the ksqlDB prompt:
+
+### image goes here
+
+If you already [seeded test data](#seeding-test-data) (`test-data` command), ksqlDB will already have the items stream defined.
+
+You can easily list available topics:
+```sql
+SHOW TOPICS;
+```
+```console
+ Kafka Topic                 | Partitions | Partition Replicas
+---------------------------------------------------------------
+ default_ksql_processing_log | 1          | 1
+ items                       | 1          | 1
+---------------------------------------------------------------
+```
+
+You can also see available streams:
+```sql
+SHOW STREAMS;
+```
+```console
+ Stream Name         | Kafka Topic                 | Key Format | Value Format | Windowed
+------------------------------------------------------------------------------------------
+ ITEMS               | items                       | KAFKA      | JSON         | false
+ KSQL_PROCESSING_LOG | default_ksql_processing_log | KAFKA      | JSON         | false
+------------------------------------------------------------------------------------------
+```
+
+If you would like to inspect the schema and metadata of the items stream, you can simply do it like this:
+```sql
+DESCRIBE items;
+```
+```console
+Name                 : ITEMS
+ Field       | Type
+--------------------------------------
+ ID          | VARCHAR(STRING)  (key)
+ NAME        | VARCHAR(STRING)
+ DESCRIPTION | VARCHAR(STRING)
+--------------------------------------
+```
+
+Things are getting more interesting, when you want to check actual data. You can see arriving records like this:
+```sql
+SELECT * FROM items EMIT CHANGES;
+```
+
+To read all records from the beginning you can set `auto.offset.reset` to `earliest`, as follows.
+```sql
+SET 'auto.offset.reset' = 'earliest';
+SELECT * FROM items EMIT CHANGES;
+```
+
+You can also use other SQL commands, e.g. `WHERE`, to adjust queries to your needs:
+```sql
+SELECT * FROM items WHERE name='Item A' EMIT CHANGES;
+```
+
+```console
++---------------+---------------+---------------+
+|ID             |NAME           |DESCRIPTION    |
++---------------+---------------+---------------+
+|1              |Item A         |Test item A    |
+```
+
+I like streams for analyzing event logs, but usually I'm more interested in the current state, which is where tables come in.
+They basically let you see a constantly updated snapshot of your data.
+Therefore, I think tables are very convenient from a data analyst perspective.
+
+In practice, you can easily aggregate stream data into a table like this:
+```sql
+CREATE TABLE items_table AS
+    SELECT id,
+       LATEST_BY_OFFSET(name) AS latest_name,
+       LATEST_BY_OFFSET(description) AS latest_description
+    FROM items
+    GROUP BY id;
+```
+
+Then, you can query it, using SQL-like syntax:
+```sql
+SELECT * FROM items_table WHERE id = '1';
+```
+```console
++-------------------+-------------------+-------------------+
+|ID                 |LATEST_NAME        |LATEST_DESCRIPTION |
++-------------------+-------------------+-------------------+
+|1                  |Item A             |Test item A        |
+```
+
+You can also apply transformations. For example, you can format a stream and output it to a new Kafka topic:
+```sql
+CREATE STREAM items_uppercase AS
+    SELECT
+        id,
+        UCASE(name) AS name_upper,
+        description
+    FROM items
+    EMIT CHANGES;
+```
+
+Or you can do it when creating tables. For example, here is a simple count:
+```sql
+CREATE TABLE item_counts AS
+    SELECT
+        name,
+        COUNT(*) AS total_count
+    FROM items
+    GROUP BY name
+    EMIT CHANGES;
+```
+
+To exit ksqlDB simply type:
+```sql
+EXIT;
+```
 
 ## Disclaimer
 
