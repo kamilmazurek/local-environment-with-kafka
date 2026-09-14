@@ -217,6 +217,56 @@ docker exec -it kafka kafka-console-producer --bootstrap-server localhost:9092 -
 docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic my-new-topic --from-beginning
 ```
 
+## Schema Registry for Data Contracts
+
+In modern architectures, establishing clear data contracts helps producers and consumers agree on how messages are structured.
+The Schema Registry acts as a centralized service to manage and validate such message schemas, which supports maintaining high data quality across pipelines.
+
+Within this local development environment, the Schema Registry:
+* allows you to manage Avro, Protobuf, or JSON schemas to enforce strict data contracts
+* exposes an API for local development accessible at `http://localhost:8081`
+* connects directly to the local Kafka broker internally
+* is integrated with the AKHQ
+
+The AKHQ UI helps you explore registered schemas, check version history, and validate compatibility rules directly.
+Instead of interacting with the underlying Schema Registry API, you can manage your contracts visually.
+
+To access the AKHQ Schema Registry view, simply visit `http://localhost:8080/ui/local-kafka/schema`:
+
+### IMAGE GOES HERE
+
+However, if you prefer working with the underlying Schema Registry API, it is available at `http://localhost:8081`.
+
+For example, you can create a simple schema like this:
+```bash
+curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" \
+  --data '{"schema": "{\"type\":\"record\",\"name\":\"User\",\"fields\":[{\"name\":\"username\",\"type\":\"string\"}]}"}' \
+  http://localhost:8081/subjects/test-topic-value/versions
+```
+
+You can then use `http://localhost:8081` API to list subjects:
+```bash
+ curl http://localhost:8081/subjects
+```
+```json
+["test-topic-value"]
+```
+
+To get more information about the `test-topic-value` schema, you can use:
+```bash
+curl http://localhost:8081/subjects/test-topic-value/versions/latest
+```
+```json
+{
+  "subject": "test-topic-value",
+  "version": 1,
+  "id": 1,
+  "schema": "{\"type\":\"record\",\"name\":\"User\",\"fields\":[{\"name\":\"username\",\"type\":\"string\"}]}"
+}
+```
+
+This combination of the Schema Registry, visual management, and direct API access makes it easy to enforce and test data contracts locally.
+
 ## Disclaimer
 
 THIS SOFTWARE AND ANY DOCUMENTATION INCLUDED IN THIS REPOSITORY AND CREATED BY THE AUTHOR
