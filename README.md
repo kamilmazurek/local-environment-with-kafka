@@ -434,6 +434,15 @@ dev-env clean
 
 Simple as that, you can stop containers or clean the environment to start fresh next time.
 
+## Additional Resources
+
+* [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+* [KRaft: Apache Kafka Without ZooKeeper](https://developer.confluent.io/learn/kraft/)
+* [ksqlDB Documentation](https://docs.confluent.io/platform/current/ksqldb/overview.html)
+* [AKHQ - Kafka GUI for Apache Kafka](https://akhq.io/)
+* [Schema Registry for Confluent Platform](https://docs.confluent.io/platform/current/schema-registry/index.html)
+* [ksqlDB - Database Streaming FAQs](https://developer.confluent.io/faq/apache-kafka/ksqldb/)
+
 ## Disclaimer
 
 THIS SOFTWARE AND ANY DOCUMENTATION INCLUDED IN THIS REPOSITORY AND CREATED BY THE AUTHOR
