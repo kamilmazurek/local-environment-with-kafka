@@ -443,6 +443,16 @@ Simple as that, you can stop containers or clean the environment to start fresh 
 * [Schema Registry for Confluent Platform](https://docs.confluent.io/platform/current/schema-registry/index.html)
 * [ksqlDB - Database Streaming FAQs](https://developer.confluent.io/faq/apache-kafka/ksqldb/)
 
+## Author
+This project was created by [Kamil Mazurek](https://kamilmazurek.pl), a Software Engineer based in Warsaw, Poland.
+You can also find me on my [LinkedIn profile](https://www.linkedin.com/in/kamil-mazurek).
+
+More of my repositories can also be found on my GitHub and GitLab profiles:
+- [Kamil Mazurek on GitHub](https://github.com/kamilmazurek)
+- [Kamil Mazurek on GitLab](https://gitlab.com/kamilmazurek)
+
+Thanks for visiting 🙂
+
 ## Disclaimer
 
 THIS SOFTWARE AND ANY DOCUMENTATION INCLUDED IN THIS REPOSITORY AND CREATED BY THE AUTHOR
