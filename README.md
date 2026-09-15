@@ -403,6 +403,37 @@ To exit ksqlDB simply type:
 EXIT;
 ```
 
+## Stop and Cleanup
+
+When you have finished working with the environment, you can shut it down using the provided wrapper scripts.
+
+If you want to stop the containers, use the `stop` command:
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh stop
+```
+
+**For Windows:**
+```cmd
+dev-env stop
+```
+
+If you want to completely tear down the infrastructure and remove associated data (such as topics and schemas), use the `clean` command.
+This stops the environment and deletes the data volumes.
+
+**For Linux/macOS:**
+```bash
+./dev-env.sh clean
+```
+
+**For Windows:**
+```cmd
+dev-env clean
+```
+
+Simple as that, you can stop containers or clean the environment to start fresh next time.
+
 ## Disclaimer
 
 THIS SOFTWARE AND ANY DOCUMENTATION INCLUDED IN THIS REPOSITORY AND CREATED BY THE AUTHOR
