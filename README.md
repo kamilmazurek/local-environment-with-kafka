@@ -74,11 +74,11 @@ In summary, the stack looks as follows:
     - **ksqlDB CLI**: Interactive command-line interface to write and execute queries.
 
 - **Observability**
-    - **AKHQ**: Web-based UI used to visually inspect Kafka topics, read message payloads, and manage consumer groups.
+    - **AKHQ**: GUI used to visually inspect Kafka topics, read message payloads, and manage consumer groups.
 
 - **Infrastructure & Automation**
     - **Docker and Docker Compose**: Platforms used to containerize and spin up the entire cluster consistently.
-    - **Bash and Batch Scripts**: Custom wrapper scripts (`dev-env.sh` and `dev-env.bat`) designed to simplify environment lifecycle management.
+    - **Bash and Batch Scripts**: Custom wrapper scripts to simplify environment lifecycle management.
 
 ## Deployment
 
