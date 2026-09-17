@@ -15,7 +15,40 @@ The goal is to keep it useful, simple, clean, and easy to run.
 
 ## Quickstart
 
-TODO
+Following steps provide a quick way to get started with the environment:
+
+1. Ensure Docker (with Docker Compose) is running on your machine, as it is required to orchestrate the containerized infrastructure.
+2. Download the source code either by cloning the repository with Git or by downloading the ZIP file. If you downloaded the ZIP, extract it. Then navigate to the dev-env-with-kafka folder.
+3. Start the environment in the background to run the Kafka broker, Schema Registry, ksqlDB, and AKHQ:
+
+   **For Linux/macOS:**
+    ```bash
+    ./dev-env start
+    ```
+
+   **For Windows:**
+    ```cmd
+    dev-env start
+    ```
+
+4. Wait until the environment is fully initialized (you can simply use `dev-env logs` for details). Then you can seed the cluster with test data:
+
+   **For Linux/macOS:**
+    ```bash
+    ./dev-env test-data
+    ```
+
+   **For Windows:**
+    ```cmd
+    dev-env test-data
+    ```
+
+5. Verify that the application is running and the test data is present by opening the AKHQ UI in a web browser:
+    ```console
+    http://localhost:8080
+    ```
+   You can use this interface to visually inspect the newly created `items` topic, check active listeners, and review the stored message payloads.
+6. Adjust the environment to your needs, and when you are finished, easily shut down the cluster using `./dev-env stop` (or `dev-env stop` on Windows) 🚀.
 
 ## Table of Contents
 * [Reusable Local Environment](#reusable-local-environment)
@@ -78,19 +111,19 @@ In summary, the stack looks as follows:
 
 - **Infrastructure & Automation**
     - **Docker and Docker Compose**: Platforms used to containerize and spin up the entire cluster consistently.
-    - **Bash and Batch Scripts**: Custom wrapper scripts to simplify environment lifecycle management.
+    - **Bash and Batch Scripts**: Custom scripts to simplify environment lifecycle management.
 
 ## Deployment
 
 The entire infrastructure is containerized and orchestrated using Docker Compose.
-To make managing the lifecycle of the environment easier, this repository includes wrapper scripts (`dev-env.sh` for Linux/macOS and `dev-env.bat` for Windows).
+To make managing the lifecycle of the environment easier, this repository includes wrapper scripts (`dev-env` for Linux/macOS and `dev-env.bat` for Windows).
 
 ### Start the Environment
 To start the Kafka broker, Schema Registry, ksqlDB, and AKHQ in the background, simply use the `start` command:
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh start
+./dev-env start
 ```
 
 **For Windows:**
@@ -113,7 +146,7 @@ You can check the status of your containers by running:
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh status
+./dev-env status
 ```
 
 **For Windows:**
@@ -125,7 +158,7 @@ If you need to troubleshoot or simply want to watch the components boot up in re
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh logs
+./dev-env logs
 ```
 
 **For Windows:**
@@ -147,7 +180,7 @@ To seed the environment with test data, **wait until the environment is fully in
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh test-data
+./dev-env test-data
 ```
 
 **For Windows:**
@@ -276,7 +309,7 @@ You can start an interactive ksqlDB CLI session using the provided wrapper scrip
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh ksql
+./dev-env ksql
 ```
 
 **For Windows:**
@@ -411,7 +444,7 @@ If you want to stop the containers, use the `stop` command:
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh stop
+./dev-env stop
 ```
 
 **For Windows:**
@@ -424,7 +457,7 @@ This stops the environment and deletes the data volumes.
 
 **For Linux/macOS:**
 ```bash
-./dev-env.sh clean
+./dev-env clean
 ```
 
 **For Windows:**
