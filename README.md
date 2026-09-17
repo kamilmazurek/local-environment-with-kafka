@@ -142,6 +142,7 @@ You should see a confirmation that the environment started successfully, along w
   <br>
   <i>Sample output of a successful environment start</i>
 </p>
+
 ### Verify Services and Logs
 
 It may take a few moments for all the services to fully initialize.
