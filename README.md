@@ -137,8 +137,11 @@ You should see a confirmation that the environment started successfully, along w
 * AKHQ UI: `http://localhost:8080`
 * ksqlDB Server: `http://localhost:8088`
 
-### image goes here
-
+<p align="center">
+  <img src="readme-images/dev-env-start.png" alt="Startup confirmation" />
+  <br>
+  <i>Sample output of a successful environment start</i>
+</p>
 ### Verify Services and Logs
 
 It may take a few moments for all the services to fully initialize.
