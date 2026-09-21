@@ -215,9 +215,14 @@ Once open, the dashboard gives you a unified view of your local environment:
 
 As an example, here is a quick glimpse of how the AKHQ interface displays messages:
 
-### TODO: ADD IMAGE
+<p align="center">
+  <img src="readme-images/akhq-data-example.png" alt="Sample AKHQ data view" />
+  <br>
+  <i>Sample AKHQ data view. For more information about AKHQ please visit <a href="https://akhq.io/">akhq.io</a>.</i>
+</p>
 
-Having visual feedback on your topics and messages makes testing and debugging significantly easier.
+
+Having a clear view of your topics and messages makes testing and debugging significantly easier.
 
 ## Managing Topics and Messages via CLI
 
