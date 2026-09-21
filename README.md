@@ -3,6 +3,10 @@
 This repository contains an implementation of a local development environment, featuring **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
 This setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
 
+<p align="center">
+  <img src="readme-images/dev-env-start.png" alt="Startup confirmation" />
+</p>
+
 Key advantages:
 * **Developer Productivity**: Lets developers start quickly while keeping consistent infrastructure across projects.
 * **Simple Architecture**: Runs Kafka in KRaft mode for simpler setup, faster boots, and lower memory usage.
