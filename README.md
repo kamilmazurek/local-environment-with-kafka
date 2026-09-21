@@ -216,9 +216,9 @@ Once open, the dashboard gives you a unified view of your local environment:
 As an example, here is a quick glimpse of how the AKHQ interface displays messages:
 
 <p align="center">
-  <img src="readme-images/akhq-data-example.png" alt="Sample AKHQ data view" />
+  <img src="readme-images/akhq-data-example.png" alt="Sample AKHQ Data view" />
   <br>
-  <i>Sample AKHQ data view. For more information about AKHQ please visit <a href="https://akhq.io/">akhq.io</a>.</i>
+  <i>Sample AKHQ Data view. For more information about AKHQ please visit <a href="https://akhq.io/">akhq.io</a>.</i>
 </p>
 
 
@@ -276,7 +276,13 @@ Instead of interacting with the underlying Schema Registry API, you can manage y
 
 To access the AKHQ Schema Registry view, simply visit `http://localhost:8080/ui/local-kafka/schema`:
 
-### IMAGE GOES HERE
+
+<p align="center">
+  <img src="readme-images/akhq-schema-registry-example.png" alt="Sample AKHQ Schema Registry view" />
+  <br>
+  <i>Sample AKHQ Schema Registry view. For more information about AKHQ please visit <a href="https://akhq.io/">akhq.io</a>.</i>
+</p>
+
 
 However, if you prefer working with the underlying Schema Registry API, it is available at `http://localhost:8081`.
 
