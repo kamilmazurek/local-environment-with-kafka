@@ -147,6 +147,8 @@ You should see a confirmation that the environment started successfully, along w
   <i>Sample output of a successful environment start</i>
 </p>
 
+The containers have been started. However, you might need to wait a bit while the cluster finishes booting up.
+
 ### Verify Services and Logs
 
 It may take a few moments for all the services to fully initialize.
