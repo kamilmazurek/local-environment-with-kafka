@@ -340,7 +340,12 @@ dev-env ksql
 
 Once connected, you will see the ksqlDB prompt:
 
-### image goes here
+<p align="center">
+  <img src="readme-images/ksqldb-cli-welcome-screen.png" alt="ksqlDB CLI welcome screen" />
+  <br>
+  <i>Welcome screen of ksqlDB CLI. For more information about ksqlDB please visit <a href="https://docs.confluent.io/platform/current/ksqldb/overview.html">docs.confluent.io</a>.</i>
+</p>
+
 
 If you already [seeded test data](#seeding-test-data) (`test-data` command), ksqlDB will already have the items stream defined.
 
