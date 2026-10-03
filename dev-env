@@ -15,7 +15,7 @@ case "$COMMAND" in
       echo "- AKHQ UI: http://localhost:8080"
       echo "- ksqlDB Server: http://localhost:8088"
       echo ""
-      echo "Type './dev-env.sh ksql' to start querying data."
+      echo "Type './dev-env.sh help' to see available commands."
     else
       echo ""
       echo "Error: Failed to start the development environment."
