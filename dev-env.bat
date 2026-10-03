@@ -48,7 +48,7 @@ echo - Schema Registry: http://localhost:8081
 echo - AKHQ UI: http://localhost:8080
 echo - ksqlDB Server: http://localhost:8088
 echo.
-echo Type 'dev-env ksql' to start querying your streams.
+echo Type 'dev-env ksql' to start querying data.
 GOTO :EOF
 
 :Stop
