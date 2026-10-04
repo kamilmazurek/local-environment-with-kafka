@@ -5,7 +5,7 @@ COMMAND=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 
 case "$COMMAND" in
   start)
-    echo "Starting development environment..."
+    echo "Starting local environment..."
 
     if docker compose up -d; then
       echo ""
@@ -15,17 +15,17 @@ case "$COMMAND" in
       echo "- AKHQ UI: http://localhost:8080"
       echo "- ksqlDB Server: http://localhost:8088"
       echo ""
-      echo "Type './dev-env.sh help' to see available commands."
+      echo "Type './local-env.sh help' to see available commands."
     else
       echo ""
-      echo "Error: Failed to start the development environment."
+      echo "Error: Failed to start the local environment."
       echo "Please check if the Docker daemon is running."
       exit 1
     fi
     ;;
 
   stop)
-    echo "Stopping development environment..."
+    echo "Stopping local environment..."
     docker compose down
     ;;
 
@@ -63,15 +63,15 @@ case "$COMMAND" in
 
     echo ""
     echo "Test data seeded successfully!"
-    echo "View it in AKHQ (http://localhost:8080) or run './dev-env.sh ksql' and type: SELECT * FROM items EMIT CHANGES;"
+    echo "View it in AKHQ (http://localhost:8080) or run './local-env.sh ksql' and type: SELECT * FROM items EMIT CHANGES;"
     ;;
 
   help|*)
     echo ""
     echo "========================================================"
-    echo "  Development Environment Manager"
+    echo "  Local Environment Manager"
     echo "========================================================"
-    echo "Usage: ./dev-env.sh [command]"
+    echo "Usage: ./local-env.sh [command]"
     echo ""
     echo "Commands:"
     echo "  start     - Starts the environment in the background"

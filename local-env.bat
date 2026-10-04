@@ -15,9 +15,9 @@ IF /I "%~1"=="test-data" GOTO :TestData
 :Help
 echo.
 echo ========================================================
-echo   Development Environment Manager
+echo   Local Environment Manager
 echo ========================================================
-echo Usage: dev-env [command]
+echo Usage: local-env [command]
 echo.
 echo Commands:
 echo   start     - Starts the environment in the background
@@ -31,12 +31,12 @@ echo.
 GOTO :EOF
 
 :Start
-echo Starting development environment...
+echo Starting local environment...
 docker compose up -d
 
 IF %ERRORLEVEL% NEQ 0 (
     echo.
-    echo Error: Failed to start the development environment.
+    echo Error: Failed to start the local environment.
     echo Please check if the Docker Desktop/daemon is running.
     GOTO :EOF
 )
@@ -48,11 +48,11 @@ echo - Schema Registry: http://localhost:8081
 echo - AKHQ UI: http://localhost:8080
 echo - ksqlDB Server: http://localhost:8088
 echo.
-echo Type 'dev-env help' to see available commands.
+echo Type 'local-env help' to see available commands.
 GOTO :EOF
 
 :Stop
-echo Stopping development environment...
+echo Stopping local environment...
 docker compose down
 GOTO :EOF
 
@@ -90,5 +90,5 @@ type test-data.sql | docker exec -i ksqldb-cli ksql http://ksqldb-server:8088
 
 echo.
 echo Test data seeded successfully!
-echo View it in AKHQ (http://localhost:8080) or run 'dev-env ksql' and type: SELECT * FROM items EMIT CHANGES;
+echo View it in AKHQ (http://localhost:8080) or run 'local-env ksql' and type: SELECT * FROM items EMIT CHANGES;
 GOTO :EOF
