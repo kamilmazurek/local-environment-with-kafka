@@ -120,7 +120,8 @@ In summary, the stack looks as follows:
 ## Deployment
 
 The entire infrastructure is containerized and orchestrated using Docker Compose.
-To make managing the lifecycle of the environment easier, this repository includes wrapper scripts (`local-env` for Linux/macOS and `local-env.bat` for Windows).
+To make managing the lifecycle of the environment easier, this repository includes `local-env` scripts.
+These wrapper scripts help you quickly start services, seed test data, view logs, and more.
 
 ### Start the Environment
 To start the Kafka broker, Schema Registry, ksqlDB, and AKHQ in the background, simply use the `start` command:
@@ -179,7 +180,7 @@ local-env logs
 ## Seeding Test Data
 
 By default, the started Kafka cluster contains no messages, so you may want to add some test data.
-To make testing easier and more efficient, this environment includes a quick way to inject sample data using the provided wrapper scripts.
+To make testing easier and more efficient, this environment includes a quick way to inject sample data using the provided `loca-env` scripts.
 
 Test data is stored in the `test-data.sql` file, which contains ksqlDB statements.
 By default, it automatically creates a stream named `items` and inserts three sample records into it.
@@ -326,7 +327,7 @@ You can also use good old tables 🙂
 
 In this environment, ksqlDB Server and the interactive CLI come pre-configured out of the box.
 
-You can start an interactive ksqlDB CLI session using the provided wrapper script:
+You can start an interactive ksqlDB CLI session using the provided `local-env` script:
 
 **For Linux/macOS:**
 ```bash
@@ -464,7 +465,7 @@ EXIT;
 
 ## Stop and Cleanup
 
-When you have finished working with the environment, you can shut it down using the provided wrapper scripts.
+When you have finished working with the environment, you can shut it down using the provided `local-env` scripts.
 
 If you want to stop the containers, use the `stop` command:
 
