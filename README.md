@@ -1,10 +1,10 @@
-# Local Development Environment with Apache Kafka
+# Local Environment with Apache Kafka
 
 This repository contains an implementation of a local development environment, featuring **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
 This setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
 
 <p align="center">
-  <img src="readme-images/dev-env-start.png" alt="Startup confirmation" />
+  <img src="readme-images/local-env-start.png" alt="Startup confirmation" />
 </p>
 
 Key advantages:
@@ -22,29 +22,29 @@ The goal is to keep it useful, simple, clean, and easy to run.
 Following steps provide a quick way to get started with the environment:
 
 1. Ensure Docker (with Docker Compose) is running on your machine, as it is required to orchestrate the containerized infrastructure.
-2. Download the source code either by cloning the repository with Git or by downloading the ZIP file. If you downloaded the ZIP, extract it. Then navigate to the dev-env-with-kafka folder.
+2. Download the source code either by cloning the repository with Git or by downloading the ZIP file. If you downloaded the ZIP, extract it. Then navigate to the local-environment-with-kafka folder.
 3. Start the environment in the background to run the Kafka broker, Schema Registry, ksqlDB, and AKHQ:
 
    **For Linux/macOS:**
     ```bash
-    ./dev-env start
+    ./local-env start
     ```
 
    **For Windows:**
     ```cmd
-    dev-env start
+    local-env start
     ```
 
-4. Wait until the environment is fully initialized (you can simply use `dev-env logs` for details). Then you can seed the cluster with test data:
+4. Wait until the environment is fully initialized (you can simply use `local-env logs` for details). Then you can seed the cluster with test data:
 
    **For Linux/macOS:**
     ```bash
-    ./dev-env test-data
+    ./local-env test-data
     ```
 
    **For Windows:**
     ```cmd
-    dev-env test-data
+    local-env test-data
     ```
 
 5. Verify that the application is running and the test data is present by opening the AKHQ UI in a web browser:
@@ -52,7 +52,7 @@ Following steps provide a quick way to get started with the environment:
     http://localhost:8080
     ```
    You can use this interface to visually inspect the newly created `items` topic, check active listeners, and review the stored message payloads.
-6. Adjust the environment to your needs, and when you are finished, easily shut down the cluster using `./dev-env stop` (or `dev-env stop` on Windows) 🚀.
+6. Adjust the environment to your needs, and when you are finished, easily shut down the cluster using `./local-env stop` (or `local-env stop` on Windows) 🚀.
 
 ## Table of Contents
 * [Reusable Local Environment](#reusable-local-environment)
@@ -120,19 +120,19 @@ In summary, the stack looks as follows:
 ## Deployment
 
 The entire infrastructure is containerized and orchestrated using Docker Compose.
-To make managing the lifecycle of the environment easier, this repository includes wrapper scripts (`dev-env` for Linux/macOS and `dev-env.bat` for Windows).
+To make managing the lifecycle of the environment easier, this repository includes wrapper scripts (`local-env` for Linux/macOS and `local-env.bat` for Windows).
 
 ### Start the Environment
 To start the Kafka broker, Schema Registry, ksqlDB, and AKHQ in the background, simply use the `start` command:
 
 **For Linux/macOS:**
 ```bash
-./dev-env start
+./local-env start
 ```
 
 **For Windows:**
 ```cmd
-dev-env start
+local-env start
 ```
 
 You should see a confirmation that the environment started successfully, along with the local endpoints for your services:
@@ -142,7 +142,7 @@ You should see a confirmation that the environment started successfully, along w
 * ksqlDB Server: `http://localhost:8088`
 
 <p align="center">
-  <img src="readme-images/dev-env-start.png" alt="Startup confirmation" />
+  <img src="readme-images/local-env-start.png" alt="Startup confirmation" />
   <br>
   <i>Sample output of a successful environment start</i>
 </p>
@@ -156,24 +156,24 @@ You can check the status of your containers by running:
 
 **For Linux/macOS:**
 ```bash
-./dev-env status
+./local-env status
 ```
 
 **For Windows:**
 ```cmd
-dev-env status
+local-env status
 ```
 
 If you need to troubleshoot or simply want to watch the components boot up in real-time, you can easily tail the logs for all services:
 
 **For Linux/macOS:**
 ```bash
-./dev-env logs
+./local-env logs
 ```
 
 **For Windows:**
 ```cmd
-dev-env logs
+local-env logs
 ```
 
 ## Seeding Test Data
@@ -190,12 +190,12 @@ To seed the environment with test data, **wait until the environment is fully in
 
 **For Linux/macOS:**
 ```bash
-./dev-env test-data
+./local-env test-data
 ```
 
 **For Windows:**
 ```cmd
-dev-env test-data
+local-env test-data
 ```
 
 Once the script completes successfully, you can easily verify that the messages were published to your cluster, e.g. by using AKHQ.
@@ -330,12 +330,12 @@ You can start an interactive ksqlDB CLI session using the provided wrapper scrip
 
 **For Linux/macOS:**
 ```bash
-./dev-env ksql
+./local-env ksql
 ```
 
 **For Windows:**
 ```cmd
-dev-env ksql
+local-env ksql
 ```
 
 Once connected, you will see the ksqlDB prompt:
@@ -470,12 +470,12 @@ If you want to stop the containers, use the `stop` command:
 
 **For Linux/macOS:**
 ```bash
-./dev-env stop
+./local-env stop
 ```
 
 **For Windows:**
 ```cmd
-dev-env stop
+local-env stop
 ```
 
 If you want to completely tear down the infrastructure and remove associated data (such as topics and schemas), use the `clean` command.
@@ -483,12 +483,12 @@ This stops the environment and deletes the data volumes.
 
 **For Linux/macOS:**
 ```bash
-./dev-env clean
+./local-env clean
 ```
 
 **For Windows:**
 ```cmd
-dev-env clean
+local-env clean
 ```
 
 Simple as that, you can stop containers or clean the environment to start fresh next time.
