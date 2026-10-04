@@ -1,6 +1,6 @@
 # Local Environment with Apache Kafka
 
-This repository contains an implementation of a local development environment, featuring **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
+This repository contains an implementation of a local environment using **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
 This setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
 
 <p align="center">
