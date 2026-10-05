@@ -1,7 +1,7 @@
 # Local Environment with Apache Kafka
 
 This repository contains an implementation of a local environment using **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
-This setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
+Built with **Docker Compose**, this containerized setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
 
 <p align="center">
   <img src="readme-images/local-env-start.png" alt="Startup confirmation" />
@@ -52,7 +52,7 @@ Following steps provide a quick way to get started with the environment:
     http://localhost:8080
     ```
    You can use this interface to visually inspect the newly created `items` topic, check active listeners, and review the stored message payloads.
-6. Adjust the environment to your needs, and when you are finished, easily shut down the cluster using `./local-env stop` (or `local-env stop` on Windows) 🚀.
+6. Adjust the environment to your needs. When finished, simply shut down the cluster using `./local-env stop` (or `local-env stop` on Windows) 🚀.
 
 ## Table of Contents
 * [Reusable Local Environment](#reusable-local-environment)
@@ -73,7 +73,7 @@ Following steps provide a quick way to get started with the environment:
 
 While working with data projects, I've noticed that a reusable, modern and convenient local Kafka environment provides a nice boost to efficiency.
 I also found out that starting a new data-intensive project often involves repeatedly configuring Kafka brokers (sometimes with ZooKeeper), setting up a Schema Registry, and looking for a way to test basic flows.
-This environment reduces that overhead by providing a solid foundation for building stream processing applications and microservices.
+This environment reduces that overhead by providing a solid foundation for building stream processing applications, microservices, and [event-driven architectures](https://kamilmazurek.pl/event-driven-architecture-template).
 
 To accelerate development while maintaining an industry-standard stack, the environment is preconfigured with:
 * **Apache Kafka**: Runs in KRaft mode (without ZooKeeper), reducing local memory footprint and startup time.
@@ -90,7 +90,7 @@ Apache Kafka has become a major part of modern data engineering and works as the
 Instead of relying on point-to-point integrations or traditional batch processing, it separates the systems generating data from those reading it, allowing organizations to process, route, and store massive streams of events in real-time.
 
 Kafka provides a reliable buffer that absorbs massive data spikes so downstream systems don't crash.
-Therefore, in a typical data engineering workflow, it works well with ETL (Extract, Transform, Load), real-time analytics, and event-driven architectures.
+Therefore, in a typical data engineering workflow, it works well with [ETL (Extract, Transform, Load)](https://kamilmazurek.pl/etl-template-with-flink), real-time analytics, and event-driven architectures.
 To support these workflows, the Kafka ecosystem includes powerful tools that make managing and processing data easier, such as AKHQ, Schema Registry, and ksqlDB.
 
 This local environment lets you develop and test these workflows by running the essential components of a streaming platform directly on your machine.
@@ -321,8 +321,7 @@ This combination of the Schema Registry, visual management, and direct API acces
 
 ## Data Analysis with ksqlDB
 
-With ksqlDB, you can analyze data using a familiar, SQL-like syntax.
-Instead of writing custom Java or Scala code with Kafka Streams, you can filter, transform, aggregate, and join real-time data streams declaratively.
+With ksqlDB, you can analyze data using a familiar, SQL-like syntax. This allows you to filter, transform, aggregate, and join real-time data streams declaratively.
 You can also use good old tables 🙂
 
 In this environment, ksqlDB Server and the interactive CLI come pre-configured out of the box.
@@ -479,7 +478,7 @@ If you want to stop the containers, use the `stop` command:
 local-env stop
 ```
 
-If you want to completely tear down the infrastructure and remove associated data (such as topics and schemas), use the `clean` command.
+If you want to tear down the infrastructure and remove associated data (such as topics and schemas), use the `clean` command.
 This stops the environment and deletes the data volumes.
 
 **For Linux/macOS:**
