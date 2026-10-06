@@ -1,3 +1,6 @@
+> This documentation is also available in an enhanced form at
+> [Local Environment with Apache Kafka](https://kamilmazurek.pl/local-environment-with-kafka) page.
+
 # Local Environment with Apache Kafka
 
 This repository contains an implementation of a local environment using **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
