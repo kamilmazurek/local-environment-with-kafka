@@ -498,6 +498,7 @@ Simple as that, you can stop containers or clean the environment to start fresh 
 
 ## Additional Resources
 
+* [Local Environment with Kafka, Docker, AKHQ, Schema Registry and ksqlDB](https://kamilmazurek.pl/local-environment-with-kafka)
 * [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
 * [KRaft: Apache Kafka Without ZooKeeper](https://developer.confluent.io/learn/kraft/)
 * [ksqlDB Documentation](https://docs.confluent.io/platform/current/ksqldb/overview.html)
