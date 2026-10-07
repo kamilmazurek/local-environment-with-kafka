@@ -7,7 +7,7 @@ This repository contains an implementation of a local environment using **Apache
 Built with **Docker Compose**, this containerized setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
 
 <p align="center">
-  <img src="readme-images/local-env-start.png" alt="Startup confirmation" />
+  <img src="readme-images/local-environment-with-kafka-start.png" alt="Startup confirmation" />
 </p>
 
 Key advantages:
@@ -146,7 +146,7 @@ You should see a confirmation that the environment started successfully, along w
 * ksqlDB Server: `http://localhost:8088`
 
 <p align="center">
-  <img src="readme-images/local-env-start.png" alt="Startup confirmation" />
+  <img src="readme-images/local-environment-with-kafka-start.png" alt="Startup confirmation" />
   <br>
   <i>Sample output of a successful environment start</i>
 </p>
