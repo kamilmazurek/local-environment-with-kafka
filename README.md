@@ -1,7 +1,7 @@
 > This documentation is also available in an enhanced form at
-> [Local Environment with Apache Kafka](https://kamilmazurek.pl/local-environment-with-kafka) page.
+> [Local Environment with Kafka](https://kamilmazurek.pl/local-environment-with-kafka) page.
 
-# Local Environment with Apache Kafka
+# Local Environment with Kafka
 
 This repository contains an implementation of a local environment using **Apache Kafka** running in KRaft mode, **ksqlDB**, **AKHQ**, and **Schema Registry**.
 Built with **Docker Compose**, this containerized setup is designed to help you quickly start working with Kafka, e.g., for data engineering, building microservices, developing stream processing applications, performing data analysis, or designing ETL pipelines.
