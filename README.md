@@ -505,6 +505,7 @@ Simple as that, you can stop containers or clean the environment to start fresh 
 * [AKHQ - Kafka GUI for Apache Kafka](https://akhq.io/)
 * [Schema Registry for Confluent Platform](https://docs.confluent.io/platform/current/schema-registry/index.html)
 * [ksqlDB - Database Streaming FAQs](https://developer.confluent.io/faq/apache-kafka/ksqldb/)
+* [Local Environment with Kafka on LibHunt](https://www.libhunt.com/r/local-environment-with-kafka)
 
 ## Author
 This project was created by [Kamil Mazurek](https://kamilmazurek.pl), a Software Engineer based in Warsaw, Poland.
